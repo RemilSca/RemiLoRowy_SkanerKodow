@@ -20,7 +20,7 @@ def detect(frame):
 #funkcja czytajaca kod kreskowego
 def read_barcode(frame):
     bardet = cv2.barcode.BarcodeDetector()
-    decoded_info, decoded_type, corners = bardet.detectAndDecode(frame)
+    _, decoded_info, decoded_type, corners = bardet.detectAndDecode(frame)
     return frame, decoded_info
 
 #funkcja czytajaca kod qr
