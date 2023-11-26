@@ -1,6 +1,7 @@
 import cv2
 import lora
 
+
 #Funkcja ktora decyduje czy czytamy kod kreskowy czy qr
 #Jesli funkcja szukania kodu kreskowego nic nie znajdzie to wywolywana jest funkcja szukania qr
 #jesli i ona nic nie znajdzie to zwracamy None
@@ -31,4 +32,9 @@ def read_qrcode(frame):
 
     return frame, val
 
-print(detect(cv2.imread('kod.jpg')))
+try:
+    webcam = cv2.VideoCapture(0)
+    check, frame = webcam.read()
+    print(detect(frame))
+except: print('kamerka nie dziala')
+
