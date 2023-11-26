@@ -2,6 +2,7 @@ import cv2
 from gpiozero import Button
 from gpiozero import LED
 from signal import pause
+from time import sleep
 import lora
 
 
@@ -40,11 +41,14 @@ def read_qrcode(frame):
 
 button = Button(17)
 led = LED(27)
-
+led.on()
+sleep(1)
+led.off()
 def onguzik():
     led.on()
 
 def offguzik():
+    led.off()
     webcam = cv2.VideoCapture(0)
     check, frame = webcam.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
