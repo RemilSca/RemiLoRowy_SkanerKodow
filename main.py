@@ -2,7 +2,7 @@ import cv2
 from gpiozero import Button
 from gpiozero import LED
 import lora
-from time import sleep
+
 
 #Funkcja ktora decyduje czy czytamy kod kreskowy czy qr
 #Jesli funkcja szukania kodu kreskowego nic nie znajdzie to wywolywana jest funkcja szukania qr
@@ -38,20 +38,15 @@ def read_qrcode(frame):
 # detect(cv2.imread('kod.jpg'))
 
 
+button = Button(17)
+led = LED(27)
 
-
-led = LED(13)
 while True:
-    led.on()
-    sleep(1)
-    led.off()
-    sleep(1)
-
-    # webcam = cv2.VideoCapture(0)
-    # check, frame = webcam.read()
-    # print(check)
-    # cv2.imwrite('test.png', frame)
-    # webcam.release()
-    # print(detect(frame))
+    button.wait_for_press()
+    webcam = cv2.VideoCapture(0)
+    check, frame = webcam.read()
+    cv2.imwrite('test.png', frame)
+    webcam.release()
+    print(detect(frame))
 
 
