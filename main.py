@@ -20,7 +20,7 @@ def detect(frame):
 #funkcja czytajaca kod kreskowego
 def read_barcode(frame):
     bardet = cv2.barcode.BarcodeDetector()
-    ok, decoded_info, decoded_type, corners = bardet.detectAndDecode(frame)
+    decoded_info, decoded_type, corners = bardet.detectAndDecode(frame)
     return frame, decoded_info
 
 #funkcja czytajaca kod qr
@@ -32,9 +32,15 @@ def read_qrcode(frame):
 
     return frame, val
 
-try:
-    webcam = cv2.VideoCapture(0)
-    check, frame = webcam.read()
-    print(detect(frame))
-except: print('kamerka nie dziala')
+
+# detect(cv2.imread('kod.jpg'))
+
+webcam = cv2.VideoCapture(0)
+
+check, frame = webcam.read()
+print(check)
+cv2.imwrite('test.png', frame)
+webcam.release()
+print(detect(frame))
+
 
