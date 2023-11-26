@@ -32,8 +32,7 @@ def read_qrcode(frame):
 
     qcd = cv2.QRCodeDetector()
     det, a, b = qcd.detectAndDecode(frame)
-
-    return det
+    return a
 
 
 # detect(cv2.imread('kod.jpg'))
