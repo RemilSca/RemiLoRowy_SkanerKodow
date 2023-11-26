@@ -42,11 +42,12 @@ button = Button(0)
 
 while True:
     button.wait_for_press()
-    webcam = cv2.VideoCapture(0)
-    check, frame = webcam.read()
-    print(check)
-    cv2.imwrite('test.png', frame)
-    webcam.release()
-    print(detect(frame))
+    print('a')
+    # webcam = cv2.VideoCapture(0)
+    # check, frame = webcam.read()
+    # print(check)
+    # cv2.imwrite('test.png', frame)
+    # webcam.release()
+    # print(detect(frame))
 
 
