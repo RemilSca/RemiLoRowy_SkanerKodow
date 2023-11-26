@@ -41,7 +41,7 @@ def read_qrcode(frame):
 button = Button(0)
 
 
-led = LED(2)
+led = LED(13)
 led.on()
 if button.is_pressed:
     print('a')
