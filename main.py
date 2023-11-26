@@ -30,9 +30,8 @@ def read_qrcode(frame):
 
     qcd = cv2.QRCodeDetector()
     det, a, b = qcd.detectAndDecode(frame)
-    val, _ = qcd.decode(frame, a)
 
-    return frame, val
+    return frame, det
 
 
 # detect(cv2.imread('kod.jpg'))
@@ -45,7 +44,6 @@ while True:
     button.wait_for_press()
     webcam = cv2.VideoCapture(0)
     check, frame = webcam.read()
-    frame.dtype()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.imwrite('test.png', gray)
     webcam.release()
