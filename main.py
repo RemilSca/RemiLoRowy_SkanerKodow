@@ -51,10 +51,9 @@ def offguzik():
     led.off()
     webcam = cv2.VideoCapture(0)
     check, frame = webcam.read()
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    cv2.imwrite('test.png', gray)
+    cv2.imwrite('test.png', frame)
     webcam.release()
-    print(detect(gray))
+    print(detect(frame))
 
 button.when_pressed = onguzik
 button.when_released = offguzik
