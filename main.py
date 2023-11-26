@@ -10,22 +10,22 @@ import lora
 #Jesli funkcja szukania kodu kreskowego nic nie znajdzie to wywolywana jest funkcja szukania qr
 #jesli i ona nic nie znajdzie to zwracamy None
 def detect(frame):
-    frame, code = read_barcode(frame)
+    code = read_barcode(frame)
     if code:
-        return frame, code
+        return code
     else:
-        frame, code = read_qrcode(frame)
+        code = read_qrcode(frame)
         if code:
-            return frame, code
+            return code
         else:
-            return frame, None
+            return None
 
 
 #funkcja czytajaca kod kreskowego
 def read_barcode(frame):
     bardet = cv2.barcode.BarcodeDetector()
     _, decoded_info, decoded_type, corners = bardet.detectAndDecode(frame)
-    return frame, decoded_info
+    return decoded_info
 
 #funkcja czytajaca kod qr
 def read_qrcode(frame):
@@ -33,7 +33,7 @@ def read_qrcode(frame):
     qcd = cv2.QRCodeDetector()
     det, a, b = qcd.detectAndDecode(frame)
 
-    return frame, det
+    return det
 
 
 # detect(cv2.imread('kod.jpg'))
