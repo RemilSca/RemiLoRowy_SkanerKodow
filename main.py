@@ -52,7 +52,9 @@ def offguzik():
     check, frame = webcam.read()
     cv2.imwrite('test.png', frame)
     webcam.release()
-    print(detect(frame))
+    result = detect(frame)
+    if result is not None:
+        lora.send(result)
 
 button.when_pressed = onguzik
 button.when_released = offguzik
