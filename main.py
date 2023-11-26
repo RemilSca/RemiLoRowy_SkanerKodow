@@ -1,4 +1,6 @@
 import cv2
+from gpiozero import Button
+
 import lora
 
 
@@ -35,12 +37,15 @@ def read_qrcode(frame):
 
 # detect(cv2.imread('kod.jpg'))
 
-webcam = cv2.VideoCapture(0)
 
-check, frame = webcam.read()
-print(check)
-cv2.imwrite('test.png', frame)
-webcam.release()
-print(detect(frame))
+button = Button(0)
+
+while True:
+    webcam = cv2.VideoCapture(0)
+    check, frame = webcam.read()
+    print(check)
+    cv2.imwrite('test.png', frame)
+    webcam.release()
+    print(detect(frame))
 
 
