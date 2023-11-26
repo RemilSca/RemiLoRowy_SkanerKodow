@@ -40,11 +40,11 @@ def read_qrcode(frame):
 
 button = Button(0)
 
-while True:
-    led = LED(2)
-    led.on()
-    if button.is_pressed:
-        print('a')
+
+led = LED(2)
+led.on()
+if button.is_pressed:
+    print('a')
     # webcam = cv2.VideoCapture(0)
     # check, frame = webcam.read()
     # print(check)
