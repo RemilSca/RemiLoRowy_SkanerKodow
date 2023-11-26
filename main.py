@@ -45,8 +45,9 @@ while True:
     button.wait_for_press()
     webcam = cv2.VideoCapture(0)
     check, frame = webcam.read()
-    cv2.imwrite('test.png', frame)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite('test.png', gray)
     webcam.release()
-    print(detect(frame))
+    print(detect(gray))
 
 
