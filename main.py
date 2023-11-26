@@ -1,6 +1,7 @@
 import cv2
 from gpiozero import Button
 from gpiozero import LED
+from signal import pause
 import lora
 
 
@@ -40,13 +41,20 @@ def read_qrcode(frame):
 button = Button(17)
 led = LED(27)
 
-while True:
-    button.wait_for_press()
+def onguzik():
+    led.on()
+
+def offguzik():
     webcam = cv2.VideoCapture(0)
     check, frame = webcam.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.imwrite('test.png', gray)
     webcam.release()
     print(detect(gray))
+
+button.when_pressed = onguzik
+button.when_released = offguzik
+pause()
+
 
 
