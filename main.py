@@ -58,6 +58,7 @@ def offguzik():
 
 button.when_pressed = onguzik
 button.when_released = offguzik
+lora.start()
 pause()
 
 

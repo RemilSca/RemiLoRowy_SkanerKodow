@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import base64
+import json
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -7,14 +8,15 @@ def on_connect(client, userdata, flags, rc):
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    client.subscribe("#/up")
+    client.subscribe("v3/remilora@ttn/devices/+/up")
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-    p = msg.payload.uplink_message.frm_payload
-    p.decode("ascii")
-    print(p)
+    p = json.loads(msg.payload.decode('ascii'))
+    p = p["uplink_message"]["frm_payload"]
+    p = base64.b64decode(p).decode('ascii')
+
 
 client = mqtt.Client()
 client.on_connect = on_connect
