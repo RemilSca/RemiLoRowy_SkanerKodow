@@ -8,7 +8,7 @@ appkey = '592D888ADE8D3EB039F1CFC0673639D5'
 def write_read(x, lora):
 
     lora.write(bytes(x, 'utf-8'))
-    data = lora.read()
+    data = lora.readline()
     data = data.decode()
 
     return data
