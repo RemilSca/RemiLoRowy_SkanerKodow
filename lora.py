@@ -14,7 +14,7 @@ def write_read(x, lora):
     return data
 
 def start():
-    lora = serial.Serial(port=port, baudrate=9600, timeout=100)
+    lora = serial.Serial(port=port, baudrate=9600, timeout=None)
     x = write_read(f'AT+KEY=APPKEY,"{appkey}"', lora)
     print(x)
     x = write_read(f'AT+MODE=LWOTAA', lora)
