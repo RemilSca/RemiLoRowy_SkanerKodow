@@ -29,6 +29,6 @@ def start():
 #Funkcja wysylajaca dane przez lora, numer portu usb bedzie sie zmieniac wiec trzeba zaimplementowac jakis wykrywacz
 def send(d):
     lora = serial.Serial(port=port, baudrate=9600, timeout=0.1)
-    x = write_read(f'AT+MSGHEX={d}\n', lora)
+    x = write_read(f'AT+MSG={d}\n', lora)
 
 start()
