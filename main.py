@@ -7,7 +7,7 @@ import lora
 
 
 with open('db.txt', 'r') as f:
-    baza = dict(f.read())
+    baza = eval(f.read())
 
 
 #Funkcja ktora decyduje czy czytamy kod kreskowy czy qr
