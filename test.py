@@ -16,7 +16,7 @@ def on_message(client, userdata, msg):
     p = json.loads(msg.payload.decode('ascii'))
     p = p["uplink_message"]["frm_payload"]
     p = base64.b64decode(p).decode('ascii')
-
+    print(p)
 
 client = mqtt.Client()
 client.on_connect = on_connect

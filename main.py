@@ -6,6 +6,10 @@ from time import sleep
 import lora
 
 
+with open('db.txt', 'r') as f:
+    baza = dict(f.read())
+
+
 #Funkcja ktora decyduje czy czytamy kod kreskowy czy qr
 #Jesli funkcja szukania kodu kreskowego nic nie znajdzie to wywolywana jest funkcja szukania qr
 #jesli i ona nic nie znajdzie to zwracamy None
@@ -54,7 +58,8 @@ def offguzik():
     webcam.release()
     result = detect(frame)
     if result is not None:
-        lora.send(result)
+        found = list(baza.keys())[list(baza.values()).index(result)]
+        lora.send(found)
 
 button.when_pressed = onguzik
 button.when_released = offguzik
