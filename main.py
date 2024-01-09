@@ -78,6 +78,10 @@ def offguzik():
                 sleep(0.25)
                 ledc.off()
                 sleep(0.1)
+    else:
+        ledc.on()
+        sleep(0.25)
+        ledc.off()
 
 button.when_pressed = onguzik
 button.when_released = offguzik
