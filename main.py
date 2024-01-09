@@ -49,10 +49,8 @@ ledc = LED(24)
 ledy.on()
 ledz.on()
 ledc.on()
-sleep(1)
-ledy.off()
-ledz.off()
-ledc.off()
+
+
 
 
 def onguzik():
@@ -86,6 +84,9 @@ def offguzik():
 button.when_pressed = onguzik
 button.when_released = offguzik
 lora.start()
+ledy.off()
+ledz.off()
+ledc.off()
 pause()
 
 
