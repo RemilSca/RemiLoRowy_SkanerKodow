@@ -43,23 +43,41 @@ def read_qrcode(frame):
 
 
 button = Button(17)
-led = LED(27)
-led.on()
+ledy = LED(27)
+ledz = LED(23)
+ledc = LED(24)
+ledy.on()
+ledz.on()
+ledc.on()
 sleep(1)
-led.off()
+ledy.off()
+ledz.off()
+ledc.off()
+
+
 def onguzik():
-    led.on()
+    ledy.on()
 
 def offguzik():
-    led.off()
+    ledy.off()
     webcam = cv2.VideoCapture(0)
     check, frame = webcam.read()
     cv2.imwrite('test.png', frame)
     webcam.release()
     result = detect(frame)
     if result is not None:
-        found = list(baza.keys())[list(baza.values()).index(result)]
-        lora.send(found)
+        if result in baza.values():
+            found = list(baza.keys())[list(baza.values()).index(result)]
+            lora.send(found)
+            ledz.on()
+            sleep(0.25)
+            ledz.off()
+        else:
+            for i in range(2):
+                ledc.on()
+                sleep(0.25)
+                ledc.off()
+                sleep(0.1)
 
 button.when_pressed = onguzik
 button.when_released = offguzik
