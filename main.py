@@ -39,8 +39,6 @@ def read_qrcode(frame):
     return det
 
 
-# detect(cv2.imread('kod.jpg'))
-
 
 button = Button(17)
 ledy = LED(27)
